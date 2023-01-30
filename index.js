@@ -2,11 +2,9 @@
 import { program } from 'commander'
 import helpOption from './lib/core/help.js'
 import createCommands from './lib/core/create.js'
-import { readFileSync } from 'fs'
+import getVersion from './lib/utils/version.js'
 
-const packageData = readFileSync('./package.json', {encoding: 'utf-8'})
-
-program.version(JSON.parse(packageData).version)
+program.version(getVersion())
 
 helpOption()
 
