@@ -2,9 +2,11 @@
 import { program } from 'commander'
 import helpOption from './lib/core/help.js'
 import createCommands from './lib/core/create.js'
-// import pk from './package.json' assert {type: 'json'}
+import { readFileSync } from 'fs'
 
-program.version('1.0.0')
+const packageData = readFileSync('./package.json', {encoding: 'utf-8'})
+
+program.version(JSON.parse(packageData).version)
 
 helpOption()
 
